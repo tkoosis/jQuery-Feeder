@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>jquery.feeder.js Demo</title>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+		<script type="text/javascript" src="assets/js/jquery.metadata.js"></script>
+		<script type="text/javascript" src="assets/js/jquery.feeder.js"></script>
+		<script type="text/javascript" src="assets/js/jquery.feeder.definitions.js"></script>		
+		<script type="text/javascript">
+			 $(document).ready(function() {
+     			// define any global defaults here (or delete if uncessary)
+     			// these values get overwritten by per feed values
+                // $.fn.feeder.defaults.auth           = "gizmodo";
+                // $.fn.feeder.defaults.quantity       = 10;
+     	        $.fn.feeder.defaults.loadAnimation   ="assets/img/loading.gif" // url to loading image			
+     			//feed: 		null, // feed to get (active options: 'friendfeed'), required
+     			//auth: 		null, // necessary feed account name/id, default = null, required
+     			//selector: 	null, // selector to append results to, default: parent element, optional
+     			//output: 	null, // output format type (li, div), automatically determined by parent type
+     			//quantity:	20, //  number of results to return, default = 20
+     			//returnFeed: "", // formatted string of feed
+     			//dateFormat: "%Y-%m-%dT%H:%M:%SZ",// formatting of feed dates, inactive
+
+     			jQuery.fn.set_feeder = function() {
+     				return this.each(function() {
+     					var $this = jQuery(this), data = $this.metadata();
+     					$this.feeder(data);
+     				});
+     			};
+     						     
+				$('.feeder').set_feeder();		
+			});
+		</script>
+	</head>
+	<body>
+		<div id="feeds">
+			<h1>Friend Feed</h1>
+			<div id="friendfeed" class="feeder { feed:'twitter', auth:'gizmodo', quantity:10 }"></div>
+		</div>		
+	</body>
+</html>
